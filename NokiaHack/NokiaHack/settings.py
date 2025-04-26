@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +31,8 @@ SECRET_KEY = 'django-insecure-s$@utx9z2lv&-@79w$0fa1tr#9zq$%m-_dh45pt75mbwo&sp8^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['your-heroku-app-name.herokuapp.com', 'localhost']
+
 
 
 # Application definition
@@ -42,10 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-ASGI_APPLICATION = "video_meet.routing.application"
-
 # Channels
-ASGI_APPLICATION = "video_meet.asgi.application"
+ASGI_APPLICATION = "NokiaHack.asgi.application"
 
 # Channel layers (for in-memory communication)
 CHANNEL_LAYERS = {
@@ -88,8 +93,11 @@ WSGI_APPLICATION = 'NokiaHack.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+import dj_database_url
+
 DATABASES = {
     'default': {
+        'default': dj_database_url.config(default='postgres://localhost')
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
