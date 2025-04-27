@@ -274,13 +274,24 @@
         <h2 style="margin: 0;">Need Help?</h2>
         <button id="close-chat" style="background: transparent; border: none; font-size: 20px; cursor: pointer;">X</button>
     </div>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1" type="text/javascript"></script>
+
+    <!-- 2) The actual chat widget (hidden by default) -->
+    <df-messenger
+    id="df-chat"
+    chat-title="Vigorium Assistant"
+    agent-id="db98b33a-3736-4c06-9d91-4b7d9e375ded"
+    language-code="en"
+    intent="WELCOME"
+    hidden>
+    </df-messenger>
+    </script>
     <div id="ai-chat-messages" style="height: 300px; overflow-y: auto; margin: 10px 0; border: 1px solid #ccc; padding: 10px; background: #f9f9f9;"></div>
     <form id="ai-chat-form" style="display: flex; gap: 10px; margin-top: 10px;">
         <input type="text" id="ai-chat-input" placeholder="Ask me anything..." style="flex: 1; padding: 10px;">
         <button type="submit">Send</button>
     </form>
     </dialog>    
-
 
 
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>  <!-- This stays the same -->

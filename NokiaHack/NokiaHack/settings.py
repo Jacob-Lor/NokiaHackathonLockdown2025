@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-s$@utx9z2lv&-@79w$0fa1tr#9zq$%m-_dh45pt75mbwo&sp8^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['your-heroku-app-name.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ["*"]
 
 
 
@@ -98,9 +98,11 @@ import dj_database_url
 
 DATABASES = {
     'default': {
-        'default': dj_database_url.config(default='postgres://localhost')
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",  # The path to your SQLite database file
     }
 }
+
 
 
 # Password validation
